@@ -23,7 +23,15 @@ public class Venta {
         this.unidades = unidades;
     }
     
-    public double realizaVenta(Juego juego){
-        
+    public double calculaImporteVentaJuego(Juego juego){
+        double importe;
+        if(edadCliente < juego.PEGI){
+            System.out.println("El cliente no cumple con la edad recomendada");
+            importe = 0;
+            return importe;
+        }
+        juego.descuentoPorEstado();
+        juego.calculaPrecioIva();
+        return importe = juego.precio*unidades;
     }
 }

@@ -13,13 +13,15 @@ public class Juego {
     String genero;
     double precio;
     boolean manual;
-    
+    String estado;
     int PEGI;
 
-    public Juego(String titulo, String genero, double precio, int PEGI) {
+    public Juego(String titulo, String genero, double precio, boolean manual, String estado, int PEGI) {
         this.titulo = titulo;
         this.genero = genero;
         this.precio = precio;
+        this.manual = manual;
+        this.estado = estado;
         this.PEGI = PEGI;
     }
     
@@ -28,8 +30,19 @@ public class Juego {
         return precioIva;
     }
     
-    public descuentoEstado(){
-        
+    public double descuentoPorEstado(){
+        double descuento;
+        if(manual==true){
+            descuento = 1.00;
+        }else{
+            descuento = 0.80;
+        }
+        if(estado == "desgastado"){
+            descuento = descuento-0.20;
+        }else if(estado == "pesimo"){
+            descuento = descuento-0.50;
+        }
+        return precio*descuento;
     }
     
 }
