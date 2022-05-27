@@ -30,8 +30,6 @@ public class Venta {
             importe = 0;
             return importe;
         }
-        juego.descuentoPorEstado();
-        juego.calculaPrecioIva();
         return importe = juego.precio*unidades;
     }
 }
